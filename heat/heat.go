@@ -3,7 +3,7 @@ package heat
 // 计算公式的标量
 const ScalarHeat float64 = 0.7
 
-var HeatRule map[string]map[string]map[string]float64 = map[string]map[string]map[string]float64{
+var heatRule map[string]map[string]map[string]float64 = map[string]map[string]map[string]float64{
 	"veryMild": map[string]map[string]float64{
 		"loseFlesh": map[string]float64{
 			"upper": 30,
@@ -70,8 +70,8 @@ var ruleKeyForActiveFlag[4]string = [4]string{
 
 func CalcHeatProvideScope(weight float64,activeFlag uint8, bodilyForm string) map[string]float64 {
 	ruleKey := ruleKeyForActiveFlag[activeFlag]
-	upper := weight * ScalarHeat * HeatRule[ruleKey][bodilyForm]["upper"]
-	floor := weight * ScalarHeat * HeatRule[ruleKey][bodilyForm]["floor"]
+	upper := weight * ScalarHeat * heatRule[ruleKey][bodilyForm]["upper"]
+	floor := weight * ScalarHeat * heatRule[ruleKey][bodilyForm]["floor"]
 
 	heat := map[string]float64 {
 		"upper" : upper,
